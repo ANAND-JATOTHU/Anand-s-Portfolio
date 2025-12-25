@@ -1,0 +1,277 @@
+@import url('https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&display=swap');
+
+/* --- NORTH POLE THEME --- */
+:root {
+    /* Image Background used on Body */
+
+    /* Icy Text */
+    --text-primary: #ffffff;
+    --text-secondary: #a8d5e5;
+
+    /* Aurora Accents */
+    --accent-primary: #55efc4;
+    /* Green */
+    --accent-secondary: #a29bfe;
+    /* Purple */
+
+    /* Frosty Glass */
+    --glass-bg: rgba(9, 23, 48, 0.4);
+    /* Dark blue tint */
+    --glass-border: rgba(85, 239, 196, 0.2);
+    /* Green glow border */
+    --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.5);
+
+    --card-hover-bg: rgba(85, 239, 196, 0.05);
+}
+
+/* --- GLOBAL RESET --- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Outfit', sans-serif;
+    color: var(--text-primary);
+
+    /* Custom Background Image */
+    background: url('assets/bg6.jpg') no-repeat center center fixed;
+    background-size: cover;
+
+    overflow-x: hidden;
+    line-height: 1.6;
+    min-height: 100vh;
+}
+
+/* Canvas behind everything (Overlay for Snow/Aurora) */
+canvas#bg {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+main {
+    position: relative;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem;
+    z-index: 1;
+}
+
+/* HEADER */
+header {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+
+}
+
+h1 {
+    font-size: 5rem;
+    font-weight: 800;
+    margin-bottom: 0.5rem;
+    line-height: 1.1;
+    letter-spacing: -2px;
+
+    /* White text with glow instead of gradient */
+    color: #ffffff;
+    text-shadow: 0 0 40px rgba(85, 239, 196, 0.8),
+        0 0 20px rgba(85, 239, 196, 0.5);
+
+    /* Apple-style glassmorphism */
+    position: relative;
+    display: inline-block;
+    padding: 0.5rem 1.5rem;
+}
+
+h1::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.1);
+    z-index: -1;
+}
+
+h2 {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: var(--text-secondary);
+    margin-bottom: 2rem;
+
+    /* Glass reflection effect */
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 0.8rem 1.5rem;
+    border-radius: 12px;
+    display: inline-block;
+}
+
+header p {
+    /* Glass reflection effect */
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.1);
+    padding: 1rem 1.5rem;
+    border-radius: 12px;
+}
+
+/* Social Buttons (Frosty) */
+.social-links {
+    display: flex;
+    gap: 1.2rem;
+}
+
+.social-btn {
+    text-decoration: none;
+    color: #fff;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 50px;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 4px 20px rgba(0, 0, 0, 0.1);
+}
+
+.social-btn:hover {
+    background: var(--accent-primary);
+    color: #000;
+    box-shadow: 0 0 20px var(--accent-primary);
+}
+
+/* SECTIONS */
+section {
+    margin-bottom: 8rem;
+    padding-top: 2rem;
+}
+
+.section-title {
+    font-size: 2.5rem;
+    margin-bottom: 2.5rem;
+    color: var(--accent-primary);
+    font-weight: 700;
+    text-shadow: 0 0 10px rgba(85, 239, 196, 0.2);
+}
+
+/* GLASS CARDS - Reflective Glass Effect */
+.glass-card {
+    background: linear-gradient(135deg,
+            rgba(255, 255, 255, 0.25) 0%,
+            rgba(255, 255, 255, 0.15) 50%,
+            rgba(255, 255, 255, 0.05) 100%);
+    backdrop-filter: blur(20px) saturate(180%);
+    -webkit-backdrop-filter: blur(20px) saturate(180%);
+    border: 1px solid rgba(255, 255, 255, 0.4);
+    border-radius: 24px;
+    padding: 2.5rem;
+    box-shadow:
+        inset 0 1px 0 rgba(255, 255, 255, 0.6),
+        0 8px 32px 0 rgba(0, 0, 0, 0.15);
+    transition: transform 0.3s ease, border-color 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 1.5rem;
+}
+
+.glass-card:hover {
+    transform: translateY(-5px);
+    border-color: rgba(85, 239, 196, 0.5);
+    box-shadow: 0 8px 32px 0 rgba(85, 239, 196, 0.2);
+}
+
+.glass-card h4 {
+    color: #fff;
+    font-size: 1.25rem;
+    margin-bottom: 0.5rem;
+}
+
+.glass-card p {
+    color: var(--text-secondary);
+    opacity: 0.9;
+}
+
+.project-title {
+    color: var(--accent-primary);
+}
+
+/* GRID */
+.grid-2 {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+}
+
+/* SKILLS */
+.skill-tag {
+    display: inline-block;
+    background: rgba(85, 239, 196, 0.1);
+    color: var(--accent-primary);
+    border: 1px solid rgba(85, 239, 196, 0.3);
+    padding: 0.6rem 1.2rem;
+    border-radius: 12px;
+    margin: 0.3rem;
+    font-size: 0.9rem;
+    font-weight: 600;
+}
+
+/* FOOTER */
+footer {
+    text-align: center;
+    padding: 3rem 0;
+    color: var(--text-secondary);
+    border-top: 1px solid var(--glass-border);
+}
+
+/* ANIMATIONS */
+.hidden {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: 1s;
+}
+
+.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 3rem;
+    }
+}
