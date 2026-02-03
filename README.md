@@ -44,14 +44,14 @@ Update the background image path in `style.css`:
 background: url('assets/your-image.jpg') no-repeat center center fixed;
 ```
 
-### Adjust Snow
+## Adjust Snow
 Modify snow particle count and speed in `script.js`:
 ```javascript
 const snowCount = 200;  // Number of snowflakes
 sprite.userData.fallSpeed = Math.random() * 0.07 + 0.08;  // Fall speed
 ```
 
-### Santa Animation
+## Santa Animation
 Update Santa video source in `script.js`:
 ```javascript
 video.src = 'assets/your-video.webm';
@@ -78,3 +78,4 @@ MIT License - Feel free to use this for your own portfolio!
 ---
 
 ⭐ If you like this project, please give it a star on GitHub!
+
