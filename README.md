@@ -2,7 +2,7 @@
 
 A festive, interactive portfolio website featuring a stunning North Pole Christmas theme with Three.js animations.
 
-## ✨ Features
+## ✨Features
 
 - **Animated Santa**: Flying Santa sleigh with green screen chroma keying
 - **Aurora Borealis**: GLSL shader-based northern lights effect
