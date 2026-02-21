@@ -14,6 +14,7 @@ const auroraVertex = `
     }
 `;
 
+
 const auroraFragment = `
     uniform float iTime;
     varying vec2 vUv;
@@ -274,3 +275,4 @@ window.addEventListener('scroll', () => {
     }
     santaSprite.position.y = 16;
 });
+
